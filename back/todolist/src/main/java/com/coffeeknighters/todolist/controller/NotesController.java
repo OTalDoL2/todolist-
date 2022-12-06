@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.coffeeknighters.service.NoteService;
+import com.coffeeknighters.todolist.service.NoteService;
 import com.coffeeknighters.todolist.models.Notes;
 import com.coffeeknighters.todolist.repository.NotesRepository;
 
@@ -24,6 +24,11 @@ public class NotesController {
     @Autowired
     NotesRepository notesRepository;
     NoteService noteService;
+
+    public NotesController(NotesRepository notesRepository, NoteService noteService) {
+        this.notesRepository = notesRepository;
+        this.noteService = noteService;
+    }
 
     @GetMapping
     public List<Notes> listarNotas(){

@@ -10,7 +10,7 @@
       <option value="media">1</option>
       <option value="baixa">0</option>
     </select>
-    <div v-for="item in notes" >
+    <div v-for="item, index in notes" :key="index" >
       {{item.titulo}}
       {{item.nota}}
       {{item.prioridade}}
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
@@ -38,7 +37,7 @@ export default {
           'Accept':  'application/json',
           'Content-Type': 'application/json'
         },
-          method: "GET",
+        method: "GET",
       })
       .then(response => response.json())
       .then(cad => {
@@ -60,7 +59,6 @@ export default {
       })
       .then(response => response.text())
       .then(cad => {
-        console.log('hahaha, se liga no beat')
         this.getNotes();
       })
     },
@@ -79,7 +77,9 @@ export default {
       .then(function (error) {
         console.log("Delete failed", error)
       })
-      this.getNotes()
+      setTimeout(() => { 
+        this.getNotes() 
+      }, 100);
     }
   },
   beforeMount() {
