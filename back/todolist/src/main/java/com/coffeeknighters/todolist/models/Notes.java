@@ -12,9 +12,9 @@ public class Notes {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String titulo;
     private String nota;
-    private String prioridade;
+    private String titulo;
+    // private String prioridade;
     public long getId() {
         return id;
     }
@@ -33,13 +33,12 @@ public class Notes {
     public void setNota(String nota) {
         this.nota = nota;
     }
-    public String getPrioridade() {
-        return prioridade;
-    }
-    public void setPrioridade(String prioridade) {
-        this.prioridade = prioridade;
-    }
-    
+    // public String getPrioridade() {
+    //     return prioridade;
+    // }
+    // public void setPrioridade(String prioridade) {
+    //     this.prioridade = prioridade;
+    // }
 }
 
 /*
