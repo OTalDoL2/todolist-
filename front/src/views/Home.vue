@@ -1,27 +1,28 @@
 <template>
-  <div class="home">
-    <h2>Titulo: </h2>
-    <input type="text" id="titulo">
-    <h2>Nota: </h2>
-    <input type="text" id="texto">
-    <h2>Prioridade: </h2>
-    <select name="" id="prioridade">
-      <option value="alta">2</option>
-      <option value="media">1</option>
-      <option value="baixa">0</option>
-    </select>
-    <div v-for="item, index in notes" :key="index" >
-      {{item.titulo}}
-      {{item.nota}}
-      {{item.prioridade}}
-      <button @click="delNotes(item.id)">Adm, alguem excloi ele?</button>
-    </div>
-    <button @click="postNotes">aaaaaa</button>
+  <div class="home">  
+      <Formulario />
+    
+      <div class="board">
+        <div class="task" v-for="item, index in notes" :key="index" >
+          <div class="titulo">
+            {{item.titulo}}
+          </div>
+          <div class="nota">
+            {{item.nota}}
+          </div>
+          <div class="prioridade">
+            {{item.prioridade}}
+          </div>
+          <button @click="delNotes(item.id)">Adm, alguem excloi ele?</button>
+        </div>
+        <button @click="postNotes">aaaaaa</button>
+      </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
+import Formulario from '../components/Forms.vue'
 
 export default {
   name: 'Home',
@@ -86,7 +87,35 @@ export default {
     this.getNotes();
   },
   components: {
-    HelloWorld
+    HelloWorld,
+    Formulario
   },
 }
 </script>
+
+<style scoped>
+.home{
+  overflow: hidden;
+  background-color: brown;
+  height: 98vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.board{
+  background-color: blue;
+  height: 500px;
+  width: 500px;
+
+}
+.task{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  background-color: aliceblue;
+}
+</style>
